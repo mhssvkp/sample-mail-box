@@ -1,0 +1,53 @@
+<div class="view-container">
+  <div class="header-container">
+    <div>
+      <p class="header">Inbox{{ "(" + unreadMails + ")" }}</p>
+    </div>
+    <div class="search-box">
+      <input type="text" name="search" id="inbox-search" placeholder="Search" />
+      <button class="btn">Search</button>
+    </div>
+  </div>
+  <div class="action-icons">
+    <div *ngFor="let icon of icons" (click)="iconClick(icon.alt)">
+      <img [src]="icon.src" [alt]="icon.alt" />
+      <label [for]="icon.alt" *ngIf="icons.label !== ''">{{
+        icon.label
+      }}</label>
+    </div>
+  </div>
+  <div class="mails">
+    <div
+      class="card"
+      *ngFor="let mail of mails[activeMenu]; index as i"
+      [ngClass]="{ 'mail-read': mail.metadata.read }"
+      (click)="cardClicked(i)"
+    >
+      <div class="check-label">
+        <input
+          type="checkbox"
+          (click)="checkBoxClick($event, i)"
+          [checked]="mail.isSelected"
+        />
+        <label>{{ mail.content.from }}</label>
+      </div>
+      <p class="subject">
+        {{ mail.content.subject }}
+      </p>
+      <p class="time">
+        {{ formatDate(mail.metadata.receivedTime) }}
+      </p>
+    </div>
+  </div>
+</div>
+
+<app-mail-content-view
+  *ngIf="showContent"
+  (closeBool)="close($event)"
+  [mail]="clickedMail"
+></app-mail-content-view>
+
+<app-mail-compose
+  (closeBool)="closeCompose($event)"
+  *ngIf="showCompose"
+></app-mail-compose>

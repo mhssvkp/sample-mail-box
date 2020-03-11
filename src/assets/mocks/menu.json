@@ -1,0 +1,35 @@
+[
+  {
+    "title": "Dashboards",
+    "icon": "assets/icons/dashboard.svg",
+    "expandable": true,
+    "subComponents": [],
+    "clickable": false
+  },
+  {
+    "title": "Graphs",
+    "icon": "assets/icons/graphs.svg",
+    "expandable": true,
+    "subComponents": [],
+    "clickable": false
+  },
+  {
+    "title": "Mailbox",
+    "icon": "assets/icons/mail.svg",
+    "expandable": true,
+    "subComponents": [
+      "Inbox",
+      "Email View",
+      "Compose Email",
+      "Email templates"
+    ],
+    "clickable": true
+  },
+  {
+    "title": "Widgets",
+    "icon": "assets/icons/widgets.svg",
+    "expandable": false,
+    "subComponents": [],
+    "clickable": false
+  }
+]

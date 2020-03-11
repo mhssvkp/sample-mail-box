@@ -1,0 +1,20 @@
+{
+  "pavan": {
+    "name": "pavan",
+    "pwd": "pavan",
+    "id": 1,
+    "mail": "mhssvkp@gmail.com"
+  },
+  "someone": {
+    "name": "someone",
+    "pwd": "someone",
+    "id": 2,
+    "mail": "someone@somedomain.com"
+  },
+  "anonymous": {
+    "name": "anonymous",
+    "pwd": "anonymous",
+    "id": 3,
+    "mail": "anonymous@anonymousdomain.com"
+  }
+}

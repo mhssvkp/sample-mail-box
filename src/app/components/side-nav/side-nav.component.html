@@ -1,0 +1,38 @@
+<div
+  id="mySidenav"
+  [ngClass]="{ 'sidenav-close': !sideNavOpen, 'sidenav-open': sideNavOpen }"
+>
+  <div class="user-holder-closed" *ngIf="!sideNavOpen">
+    <p>IN+</p>
+  </div>
+  <div class="user-holder" *ngIf="sideNavOpen">
+    <img src="assets/icons/user.svg" alt="loggedInUser" />
+    <span>{{ loggedInUser }}</span>
+  </div>
+  <ul class="list-group">
+    <li
+      class="list-group-item"
+      *ngFor="let item of menuItems"
+      [ngClass]="{ 'list-group-active': item.title === 'Mailbox' }"
+    >
+      <div class="center-align">
+        <img [src]="item.icon" [alt]="item.title" />
+        <span *ngIf="sideNavOpen">{{ item.title }}</span>
+      </div>
+      <div>
+        <ul
+          *ngIf="sideNavOpen && item.subComponents.length > 0"
+          class="list-group"
+        >
+          <li
+            *ngFor="let subComp of item.subComponents"
+            class="list-items"
+            [ngClass]="{ 'active-menu': activeMenu === subComp }"
+          >
+            {{ subComp }}
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>

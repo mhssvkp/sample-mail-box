@@ -1,0 +1,15 @@
+.mails-container {
+  display: flex;
+  flex-direction: row;
+  height: 85%;
+  margin-top: 20px;
+  background-color: white;
+  border-radius: 4px;
+  margin-right: 20px;
+  overflow: auto;
+  width: 98%;
+}
+
+.mails-view-container {
+  width: 100%;
+}

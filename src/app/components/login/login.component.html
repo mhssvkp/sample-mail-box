@@ -1,0 +1,35 @@
+<div
+  class="row justify-content-md-center col-sm col-md col-lg align-card-center"
+>
+  <div class="card card-dimensions">
+    <div class="card-body">
+      <div class="input-group mb-3">
+        <!-- <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">@</span>
+        </div> -->
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Username"
+          aria-label="Username"
+          aria-describedby="basic-addon1"
+          [(ngModel)]="userName"
+        />
+      </div>
+      <div class="input-group mb-3">
+        <!-- <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">@</span>
+        </div> -->
+        <input
+          type="password"
+          class="form-control"
+          placeholder="Password"
+          aria-label="Password"
+          aria-describedby="basic-addon1"
+          [(ngModel)]="password"
+        />
+      </div>
+      <button class="btn btn-primary" (click)="login()">Login</button>
+    </div>
+  </div>
+</div>

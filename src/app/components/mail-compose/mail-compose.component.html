@@ -1,0 +1,33 @@
+<div class="modal">
+  <div class="modal-content">
+    <img
+      class="close-btn"
+      src="assets/icons/close.svg"
+      alt="close"
+      (click)="close()"
+    />
+    <div class="to">
+      <!-- <label class="holder" for="to">To</label> -->
+      <input type="text" placeholder="To" [(ngModel)]="to" />
+    </div>
+    <div class="cc">
+      <!-- <label class="holder" for="from">CC</label> -->
+      <input type="text" placeholder="cc" [(ngModel)]="cc" />
+    </div>
+    <div class="subject">
+      <!-- <label class="holder" for="to">Subject</label> -->
+      <input type="text" placeholder="Subject" [(ngModel)]="subject" />
+    </div>
+
+    <div
+      class="mail-content"
+      contenteditable="true"
+      [textContent]="mailContent"
+      (input)="mailContent = $event.target.textContent"
+    ></div>
+    <span class="err-msg">{{ errorMessage }}</span>
+    <div class="send-button">
+      <button class="btn btn-primary" (click)="sendMail()">Send</button>
+    </div>
+  </div>
+</div>

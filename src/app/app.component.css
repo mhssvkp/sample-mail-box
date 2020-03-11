@@ -1,0 +1,28 @@
+.layout {
+  display: flex;
+  height: 100%;
+}
+
+.side-nav-holder {
+  width: 79px;
+}
+
+.main-container {
+  width: 100vw;
+  transition: 0.5s;
+}
+
+.main-container-sideNav {
+  margin-left: 185px;
+  width: 100vw;
+  transition: 0.5s;
+}
+
+.route-container {
+  margin-left: 25px;
+  height: 100%;
+}
+
+/* .container {
+  height: 100%;
+} */

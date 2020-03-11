@@ -1,0 +1,22 @@
+<div class="modal">
+  <div class="modal-content">
+    <img
+      class="close-btn"
+      src="assets/icons/close.svg"
+      alt="close"
+      (click)="close()"
+    />
+    <div class="from">
+      <label class="holder" for="from">From</label> {{ mail.content.from }}
+    </div>
+    <div class="to">
+      <label class="holder" for="to">To</label> {{ mail.content.to }}
+    </div>
+    <div class="subject">
+      <label class="holder" for="to">Subject</label>
+      {{ mail.content.subject }}
+    </div>
+
+    <div class="mail-content">{{ mail.content.content }}</div>
+  </div>
+</div>

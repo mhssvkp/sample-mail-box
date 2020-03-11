@@ -1,0 +1,65 @@
+{
+  "FOLDERS": [
+    {
+      "title": "Inbox",
+      "key": "inbox",
+      "icon": "assets/icons/inbox.svg"
+    },
+    {
+      "title": "Sent Mail",
+      "key": "sent",
+      "icon": "assets/icons/mail.svg"
+    },
+    {
+      "title": "Important",
+      "key": "important",
+      "icon": "assets/icons/important.svg"
+    },
+    {
+      "title": "Drafts",
+      "key": "drafts",
+      "icon": "assets/icons/drafts.svg"
+    },
+    {
+      "title": "Trash",
+      "key": "trash",
+      "icon": "assets/icons/delete.svg"
+    }
+  ],
+  "CATEGORIES": [
+    {
+      "title": "Work",
+      "color": "red"
+    },
+    {
+      "title": "Document",
+      "color": "green"
+    },
+    {
+      "title": "Social",
+      "color": "blue"
+    },
+    {
+      "title": "Advertising",
+      "color": "yellow"
+    },
+    {
+      "title": "Clients",
+      "color": "orange"
+    }
+  ],
+  "LABELS": [
+    {
+      "title": "Family",
+      "icon": "assets/icons/label.svg"
+    },
+    {
+      "title": "Work",
+      "icon": "assets/icons/label.svg"
+    },
+    {
+      "title": "Home",
+      "icon": "assets/icons/label.svg"
+    }
+  ]
+}

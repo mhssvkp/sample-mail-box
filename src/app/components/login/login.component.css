@@ -1,0 +1,9 @@
+.card-dimensions {
+  min-width: 18rem;
+  width: 30vw;
+}
+
+.align-card-center {
+  align-items: center;
+  height: 100%;
+}

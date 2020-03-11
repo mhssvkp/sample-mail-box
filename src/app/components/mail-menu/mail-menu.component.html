@@ -1,0 +1,31 @@
+<div class="mail-menu-container">
+  <div class="btn-holder">
+    <button (click)="composeClick()">Compose</button>
+  </div>
+  <div>
+    <div *ngFor="let item of menuItems" class="menu-holder">
+      <span class="header">{{ item }}</span>
+      <div
+        *ngFor="let menu of menus[item]"
+        [ngClass]="{
+          'border-bottom': item === 'FOLDERS',
+          'active-menu': activeMenu === menu.key
+        }"
+        (click)="menuClick(item, menu.key)"
+      >
+        <img
+          [src]="menu.icon"
+          alt=""
+          *ngIf="item === 'FOLDERS' || item === 'LABELS'"
+        />
+        <span
+          class="circle"
+          [ngStyle]="{ 'background-color': menu.color }"
+          *ngIf="item === 'CATEGORIES'"
+        >
+        </span>
+        <span class="title">{{ menu.title }}</span>
+      </div>
+    </div>
+  </div>
+</div>

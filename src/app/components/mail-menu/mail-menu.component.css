@@ -1,0 +1,58 @@
+.mail-menu-container {
+  width: 15vw;
+  min-width: 200px;
+}
+.btn-holder {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.btn-holder button {
+  border: none;
+  background-color: gray;
+  color: white;
+  padding-left: 25px;
+  padding-right: 25px;
+  border-radius: 4px;
+  align-self: center;
+}
+
+.btn-holder button:focus {
+  outline: none;
+}
+
+.circle {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.menu-holder {
+  margin: 15px;
+}
+
+.menu-holder div {
+  padding-left: 15px;
+  box-sizing: border-box;
+  padding: 4px;
+}
+
+.border-bottom {
+  border-bottom: 1px solid rgb(190, 190, 190);
+}
+
+.menu-holder div:hover {
+  background-color: rgb(238, 238, 238);
+  cursor: pointer;
+}
+
+.menu-holder div .title {
+  margin: 5px;
+}
+
+.active-menu {
+  background-color: rgb(238, 238, 238);
+  cursor: pointer;
+}

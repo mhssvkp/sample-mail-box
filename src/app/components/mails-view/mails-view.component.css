@@ -1,0 +1,104 @@
+.header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.header {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.view-container {
+  padding: 20px;
+  height: 100%;
+}
+
+.header-container input {
+  border: 1px solid lightgray;
+}
+
+.header-container input :focus {
+  outline: none;
+}
+
+.btn {
+  border: 1px solid lightgray;
+  background-color: lightgray;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+}
+
+.search-box input,
+.btn {
+  height: 45px;
+  border-radius: 0;
+}
+
+.search-box input {
+  width: 15vw;
+  padding-left: 10px;
+}
+
+.action-icons {
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+}
+
+.action-icons label {
+  cursor: pointer;
+}
+
+.action-icons div {
+  margin-left: 20px;
+}
+
+.mails {
+  margin-top: 20px;
+  height: 85%;
+  border: 1px solid lightgray;
+  border-radius: 2px;
+}
+
+.card {
+  padding: 10px;
+  flex-direction: row;
+  align-items: center;
+  /* justify-content: space-between; */
+  border-radius: 0;
+  border: none;
+  border-bottom: 0.5px solid lightgray;
+  width: 100%;
+}
+
+.card:hover {
+  cursor: pointer;
+  background-color: rgb(238, 238, 238);
+}
+
+.card label,
+.card p {
+  padding-left: 5px;
+  margin: 0;
+}
+
+.check-label {
+  width: 25%;
+}
+
+.subject {
+  width: 60%;
+}
+
+.time {
+  text-align: end;
+  width: 25%;
+}
+
+.mail-read {
+  background-color: rgb(238, 238, 238);
+}

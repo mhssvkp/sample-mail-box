@@ -1,0 +1,24 @@
+<div class="header-bar">
+  <div>
+    <img [src]="svgSrc" alt="Menu" class="menu" (click)="changeSvg()" />
+    <input
+      type="text"
+      class="search"
+      placeholder="Search for Something..."
+      aria-label="Search"
+    />
+  </div>
+  <div class="align-icons">
+    <div class="holder">
+      <img src="assets/icons/mail.svg" alt="mail" />
+      <div class="icon-badge">{{ unreadMails }}</div>
+    </div>
+    <div class="holder">
+      <img src="assets/icons/notifications.svg" alt="notifications" />
+      <div class="icon-badge">5</div>
+    </div>
+    <div class="holder" (click)="logout()">
+      <img src="assets/icons/logout.svg" alt="logout" />Logout
+    </div>
+  </div>
+</div>
