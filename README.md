@@ -25,3 +25,19 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## User Login Details
+
+username : pavan 
+password : pavan
+
+username : someone
+password : someone
+
+## Instructions to run in local
+
+1. Clone the project from GitHub.
+2. If you have node installed, go to project folder and perform `npm install`, else install latest node stable version and do    the same.
+3. You can find the users unders /src/assets/mocks/users.json , feel free to add more users, make sure you maintain same          format.
+4. The initial mails come from /src/assets/mocks/initialise-mails.json you can add more mails in already existing format.
+5. In this app you can compose and write the mails to exiting users, see inbox mails, delete mails and see sent mails in sent mails folder.
