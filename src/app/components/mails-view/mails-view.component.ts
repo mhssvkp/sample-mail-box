@@ -88,6 +88,7 @@ export class MailsViewComponent implements OnInit, OnDestroy {
   close(val) {
     console.log("close called", val);
     this.showContent = val;
+    this.checkedMails = new Array();
   }
 
   closeCompose(val) {
