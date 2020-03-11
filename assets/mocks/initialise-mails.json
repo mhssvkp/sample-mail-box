@@ -1,0 +1,144 @@
+{
+  "pavan": {
+    "sent": [
+      {
+        "metadata": {
+          "deleted": false,
+          "sentTime": 0,
+          "receivedTime": 0,
+          "drafted": false,
+          "read": false
+        },
+        "content": {
+          "to": "pavan",
+          "from": "someone",
+          "subject": "this is a test mail",
+          "content": "no content"
+        }
+      }
+    ],
+    "drafts": [
+      {
+        "metadata": {
+          "deleted": false,
+          "sentTime": 0,
+          "receivedTime": 0,
+          "drafted": false,
+          "read": false
+        },
+        "content": {
+          "from": "pavan",
+          "to": "someone",
+          "subject": "this is a test mail",
+          "content": "no content"
+        }
+      }
+    ],
+    "trash": [
+      {
+        "metadata": {
+          "deleted": false,
+          "sentTime": 0,
+          "receivedTime": 0,
+          "drafted": false,
+          "read": false
+        },
+        "content": {
+          "from": "someone",
+          "to": "pavan",
+          "subject": "this is a test mail",
+          "content": "no content"
+        }
+      }
+    ],
+    "inbox": [
+      {
+        "metadata": {
+          "deleted": false,
+          "sentTime": 0,
+          "receivedTime": 0,
+          "drafted": false,
+          "read": false
+        },
+        "content": {
+          "to": "pavan",
+          "from": "someone",
+          "subject": "this is a test mail",
+          "content": "no content"
+        }
+      },
+      {
+        "metadata": {
+          "deleted": false,
+          "sentTime": 0,
+          "receivedTime": 0,
+          "drafted": false,
+          "read": false
+        },
+        "content": {
+          "to": "pavan",
+          "from": "anonymous",
+          "subject": "this is a test mail",
+          "content": "there is some content in here"
+        }
+      },
+      {
+        "metadata": {
+          "deleted": false,
+          "sentTime": 0,
+          "receivedTime": 0,
+          "drafted": false,
+          "read": false
+        },
+        "content": {
+          "to": "pavan",
+          "from": "random external user",
+          "subject": "this is a test mail",
+          "content": "no content"
+        }
+      },
+      {
+        "metadata": {
+          "deleted": false,
+          "sentTime": 0,
+          "receivedTime": 0,
+          "drafted": false,
+          "read": false
+        },
+        "content": {
+          "to": "pavan",
+          "from": "someone",
+          "subject": "this is a test mail",
+          "content": "no content"
+        }
+      },
+      {
+        "metadata": {
+          "deleted": false,
+          "sentTime": 0,
+          "receivedTime": 0,
+          "drafted": false,
+          "read": false
+        },
+        "content": {
+          "to": "pavan",
+          "from": "anonymous",
+          "subject": "this is a test mail",
+          "content": "no content"
+        }
+      }
+    ]
+  },
+  "anonymous": {
+    "sent": [],
+    "drafts": [],
+    "trash": [],
+    "inbox": []
+  },
+  "someone": {
+    "sent": [],
+    "drafts": [],
+    "trash": [],
+    "inbox": []
+  }
+}
