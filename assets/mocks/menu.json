@@ -1,21 +1,21 @@
 [
   {
     "title": "Dashboards",
-    "icon": "/assets/icons/dashboard.svg",
+    "icon": "assets/icons/dashboard.svg",
     "expandable": true,
     "subComponents": [],
     "clickable": false
   },
   {
     "title": "Graphs",
-    "icon": "/assets/icons/graphs.svg",
+    "icon": "assets/icons/graphs.svg",
     "expandable": true,
     "subComponents": [],
     "clickable": false
   },
   {
     "title": "Mailbox",
-    "icon": "/assets/icons/mail.svg",
+    "icon": "assets/icons/mail.svg",
     "expandable": true,
     "subComponents": [
       "Inbox",
@@ -27,7 +27,7 @@
   },
   {
     "title": "Widgets",
-    "icon": "/assets/icons/widgets.svg",
+    "icon": "assets/icons/widgets.svg",
     "expandable": false,
     "subComponents": [],
     "clickable": false
