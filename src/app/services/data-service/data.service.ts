@@ -7,6 +7,7 @@ import { Subject } from "rxjs";
 import { Mailbox } from "../../modals/mailbox";
 import { Mail } from "../../modals/mail";
 import { environment } from "src/environments/environment";
+import { User } from "src/app/modals/User";
 
 @Injectable({
   providedIn: "root"
@@ -15,7 +16,7 @@ export class DataService {
   storage = new LocalStorageUtil();
   userLoginStatusObserver: Subject<boolean> = new Subject();
   unreadMailCountObserver: Subject<number> = new Subject();
-  constructor(private httpService: HttpClient, private router: Router) {}
+  constructor(private httpService: HttpClient) {}
 
   isLoggedIn(): boolean {
     return this.storage.get(constants.LOGGEDIN)?.status;
@@ -30,10 +31,10 @@ export class DataService {
     this.userLoginStatusObserver.next(this.isLoggedIn());
   }
 
-  logout() {
+  logout(): boolean {
     this.storage.remove(constants.LOGGEDIN);
     this.userLoginStatusObserver.next(this.isLoggedIn());
-    this.router.navigateByUrl("/login");
+    return true;
   }
 
   getMenus() {
@@ -91,22 +92,28 @@ export class DataService {
   }
 
   sendMail(toUser: string, fromUser: string, mail: Mail) {
-    if (fromUser === toUser) {
-      let toUserMails: Mailbox = this.getMails(toUser);
-      mail = this.addTime(mail);
-      toUserMails.inbox.push(mail);
-      toUserMails.sent.push(mail);
-      this.storage.put(toUser, toUserMails);
-    } else {
-      let toUserMails: Mailbox = this.getMails(toUser);
-      let fromUserMails: Mailbox = this.getMails(fromUser);
-      mail = this.addTime(mail);
-      fromUserMails.sent.push(mail);
-      toUserMails.inbox.push(mail);
-      this.storage.put(toUser, toUserMails);
-      this.storage.put(fromUser, fromUserMails);
+    try {
+      if (fromUser === toUser) {
+        let toUserMails: Mailbox = this.getMails(toUser);
+        mail = this.addTime(mail);
+        toUserMails.inbox.push(mail);
+        toUserMails.sent.push(mail);
+        this.storage.put(toUser, toUserMails);
+      } else {
+        let toUserMails: Mailbox = this.getMails(toUser);
+        let fromUserMails: Mailbox = this.getMails(fromUser);
+        mail = this.addTime(mail);
+        fromUserMails.sent.push(mail);
+        toUserMails.inbox.push(mail);
+        this.storage.put(toUser, toUserMails);
+        this.storage.put(fromUser, fromUserMails);
+        this.unreadMailCountObserver.next(
+          this.getUnreadMail(fromUser, "inbox")
+        );
+      }
+    } catch (error) {
+      window.alert(`User ${toUser} does not exist.`);
     }
-    this.unreadMailCountObserver.next(this.getUnreadMail(fromUser, "inbox"));
   }
 
   private addTime(mail: Mail): Mail {

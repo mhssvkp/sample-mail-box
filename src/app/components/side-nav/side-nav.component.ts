@@ -24,7 +24,7 @@ export class SideNavComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataService.getMenus().subscribe(resp => {
-      console.log(resp);
+      // console.log(resp);
       this.menuItems = resp;
     });
     this.activeMenu = this.activeMenuSvc.getActiveMenuInstant();

@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from "@angular/core";
 import { SideNavService } from "src/app/services/side-nav-service/side-nav.service";
 import { Subscription } from "rxjs";
 import { DataService } from "src/app/services/data-service/data.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-header",
@@ -16,7 +17,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   unreadMailsSubscription: Subscription = new Subscription();
   constructor(
     private sideNavService: SideNavService,
-    private dataService: DataService
+    private dataService: DataService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -43,11 +45,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   logout() {
-    this.dataService.logout();
+    let loggedOut = this.dataService.logout();
+    if (loggedOut) {
+      this.router.navigateByUrl("/login");
+    }
   }
 
   ngOnDestroy() {
-    console.log("header destroyed");
+    // console.log("header destroyed");
     this.sideNavSubscription.unsubscribe();
   }
 }

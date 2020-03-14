@@ -1,17 +1,19 @@
 .header-container {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
 }
 
 .header {
   margin: 0;
-  font-size: 2rem;
+  font-size: 25px;
 }
 
 .view-container {
   padding: 20px;
   height: 100%;
+  flex-wrap: wrap;
 }
 
 .header-container input {
@@ -29,22 +31,27 @@
 
 .search-box {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  flex-wrap: wrap;
+  height: 30px;
 }
 
 .search-box input,
 .btn {
-  height: 45px;
+  height: 30px;
   border-radius: 0;
 }
 
 .search-box input {
   width: 15vw;
+  min-width: 200px;
   padding-left: 10px;
 }
 
 .action-icons {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   cursor: pointer;
 }
@@ -60,7 +67,7 @@
 .mails {
   margin-top: 20px;
   height: 85%;
-  border: 1px solid lightgray;
+  /* border: 1px solid lightgray; */
   border-radius: 2px;
 }
 
@@ -73,6 +80,10 @@
   border: none;
   border-bottom: 0.5px solid lightgray;
   width: 100%;
+}
+
+.card:first-child {
+  border-top: 0.5px solid lightgray;
 }
 
 .card:hover {

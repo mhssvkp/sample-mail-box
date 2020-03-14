@@ -12,10 +12,10 @@ export class MailContentViewComponent implements OnInit {
   constructor() {}
 
   close() {
-    console.log("close from content");
+    // console.log("close from content");
     this.closeBool.emit(false);
   }
   ngOnInit(): void {
-    console.log(this.mail);
+    // console.log(this.mail);
   }
 }

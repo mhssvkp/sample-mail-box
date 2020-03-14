@@ -1,8 +1,8 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed } from "@angular/core/testing";
 
-import { SideNavService } from './side-nav.service';
+import { SideNavService } from "./side-nav.service";
 
-describe('SideNavService', () => {
+describe("SideNavService", () => {
   let service: SideNavService;
 
   beforeEach(() => {
@@ -10,7 +10,12 @@ describe('SideNavService', () => {
     service = TestBed.inject(SideNavService);
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
+  it("toggle value is false", () => {
+    expect(service.sideNavOpen).toBeFalse();
+  });
+
+  it("toggle value is true", () => {
+    service.toggleSideNav();
+    expect(service.sideNavOpen).toBeTrue();
   });
 });

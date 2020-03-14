@@ -10,19 +10,23 @@
 .main-container {
   width: 100vw;
   transition: 0.5s;
+  overflow: auto;
 }
 
 .main-container-sideNav {
   margin-left: 185px;
   width: 100vw;
   transition: 0.5s;
+  overflow: auto;
 }
 
 .route-container {
   margin-left: 25px;
-  height: 100%;
+  height: 89%;
 }
 
-/* .container {
-  height: 100%;
+/* @media screen and (max-width: 799px) {
+  .main-container-sideNav {
+    width: calc();
+  }
 } */

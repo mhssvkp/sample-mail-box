@@ -44,7 +44,7 @@
 }
 
 .menu-holder div:hover {
-  background-color: rgb(238, 238, 238);
+  background-color: rgb(253, 253, 253);
   cursor: pointer;
 }
 
@@ -53,6 +53,6 @@
 }
 
 .active-menu {
-  background-color: rgb(238, 238, 238);
+  background-color: rgb(253, 253, 253);
   cursor: pointer;
 }

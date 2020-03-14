@@ -11,7 +11,6 @@ import { InitialisingService } from "./services/initialising-service/initialisin
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent implements OnInit, OnDestroy {
-  title = "simple-mail-application";
   loggedIn: boolean = false;
   userName: string = "";
   sideNavSubscription: Subscription = new Subscription();

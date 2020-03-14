@@ -31,7 +31,7 @@ export class MailMenuComponent implements OnInit {
   }
 
   composeClick() {
-    console.log("compose");
+    // console.log("compose");
     this.activeMenuSub.activeMenuSubscription.next("compose");
   }
 

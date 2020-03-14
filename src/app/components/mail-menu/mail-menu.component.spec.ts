@@ -1,16 +1,20 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { MailMenuComponent } from './mail-menu.component';
+import { MailMenuComponent } from "./mail-menu.component";
+import { DataService } from "src/app/services/data-service/data.service";
+import { ActiveMenuService } from "src/app/services/active-menu/active-menu.service";
+import { HttpClientTestingModule } from "@angular/common/http/testing";
 
-describe('MailMenuComponent', () => {
+describe("MailMenuComponent", () => {
   let component: MailMenuComponent;
   let fixture: ComponentFixture<MailMenuComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MailMenuComponent ]
-    })
-    .compileComponents();
+      declarations: [MailMenuComponent],
+      imports: [HttpClientTestingModule],
+      providers: [DataService, ActiveMenuService]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +23,7 @@ describe('MailMenuComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

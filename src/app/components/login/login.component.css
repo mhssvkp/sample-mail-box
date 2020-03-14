@@ -1,9 +1,18 @@
 .card-dimensions {
-  min-width: 18rem;
   width: 30vw;
+  min-width: 300px;
 }
 
 .align-card-center {
   align-items: center;
   height: 100%;
+}
+
+.invalid {
+  border: 1px solid rgb(255, 50, 25);
+}
+
+.message-align {
+  display: flex;
+  flex-direction: column;
 }

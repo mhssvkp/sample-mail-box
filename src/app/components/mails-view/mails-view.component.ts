@@ -40,7 +40,7 @@ export class MailsViewComponent implements OnInit, OnDestroy {
   ) {}
 
   cardClicked(i: number) {
-    console.log("card clicked index:", i);
+    // console.log("card clicked index:", i);
     this.clickedMail = this.mails[this.activeMenu][i];
     this.showContent = true;
     this.dataService.readMail(this.loggedInUser, i, this.activeMenu);
@@ -68,12 +68,12 @@ export class MailsViewComponent implements OnInit, OnDestroy {
       );
     }
 
-    console.log(
-      "checked",
-      index,
-      this.mails[this.activeMenu][index],
-      this.checkedMails
-    );
+    // console.log(
+    //   "checked",
+    //   index,
+    //   this.mails[this.activeMenu][index],
+    //   this.checkedMails
+    // );
   }
 
   ngOnInit(): void {
@@ -128,7 +128,7 @@ export class MailsViewComponent implements OnInit, OnDestroy {
     );
   }
   close(val) {
-    console.log("close called", val);
+    // console.log("close called", val);
     this.showContent = val;
     this.checkedMails = new Array();
     this.refreshMailCountIfNotInbox();
@@ -149,12 +149,12 @@ export class MailsViewComponent implements OnInit, OnDestroy {
       this.checkedMails = new Array();
     }
     if (alt === "delete") {
-      console.log(alt);
-      console.log(this.checkedMails);
+      // console.log(alt);
+      // console.log(this.checkedMails);
       this.checkedMails.sort((a, b) => {
         return b.index - a.index;
       });
-      console.log(this.checkedMails);
+      // console.log(this.checkedMails);
       if (this.activeMenu === "trash") {
         this.checkedMails.forEach(val => {
           this.dataService.permenantDelete(

@@ -9,6 +9,6 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   height: 100%;
-  background-color: lightgray;
+  background-color: rgb(226, 226, 226);
   overflow: hidden;
 }

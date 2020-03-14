@@ -3,31 +3,46 @@
 >
   <div class="card card-dimensions">
     <div class="card-body">
-      <div class="input-group mb-3">
+      <div class="input-group mb-3 message-align">
         <!-- <div class="input-group-prepend">
           <span class="input-group-text" id="basic-addon1">@</span>
         </div> -->
         <input
-          type="text"
-          class="form-control"
-          placeholder="Username"
-          aria-label="Username"
-          aria-describedby="basic-addon1"
-          [(ngModel)]="userName"
+          [ngClass]="{
+            invalid:
+              (uName.invalid && (uName.dirty || uName.touched)) ||
+              isInvalidEmail
+          }"
+          type="email"
+          class="form-control "
+          placeholder="Email"
+          [(ngModel)]="email"
+          #uName="ngModel"
+          (change)="isMailValid()"
+          required
         />
+        <span
+          *ngIf="
+            (uName.invalid && (uName.dirty || uName.touched)) || isInvalidEmail
+          "
+          >Invalid mail id</span
+        >
       </div>
-      <div class="input-group mb-3">
-        <!-- <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">@</span>
-        </div> -->
+      <div class="input-group mb-3 message-align">
         <input
+          [ngClass]="{
+            invalid: uPwd.invalid && (uPwd.dirty || uPwd.touched)
+          }"
           type="password"
           class="form-control"
           placeholder="Password"
-          aria-label="Password"
-          aria-describedby="basic-addon1"
           [(ngModel)]="password"
+          required
+          #uPwd="ngModel"
         />
+        <span *ngIf="uPwd.invalid && (uPwd.dirty || uPwd.touched)"
+          >Invalid password</span
+        >
       </div>
       <button class="btn btn-primary" (click)="login()">Login</button>
     </div>
