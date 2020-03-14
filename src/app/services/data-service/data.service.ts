@@ -48,9 +48,9 @@ export class DataService {
     return this.storage.get(userName);
   }
 
-  getUnreadMail(userName) {
+  getUnreadMail(userName, type) {
     let mailbox: Mailbox = this.getMails(userName);
-    return mailbox.inbox.reduce((unreadCount, mails) => {
+    return mailbox[type].reduce((unreadCount, mails) => {
       if (!mails.metadata.read) {
         unreadCount++;
       }
@@ -60,6 +60,12 @@ export class DataService {
 
   readMail(userName, index, mailType) {
     let mails: Mailbox = this.getMails(userName);
+    const sortMails = () => {
+      mails[mailType].sort(
+        (a, b) => b.metadata.receivedTime - a.metadata.receivedTime
+      );
+    };
+    sortMails();
     mails[mailType] = mails[mailType].map((val, ind) => {
       if (ind === index) {
         val.metadata.read = true;
@@ -67,7 +73,7 @@ export class DataService {
       return val;
     });
     this.storage.put(userName, mails);
-    this.unreadMailCountObserver.next(this.getUnreadMail(userName));
+    this.unreadMailCountObserver.next(this.getUnreadMail(userName, "inbox"));
   }
 
   deleteMail(userName, type, index) {
@@ -75,6 +81,7 @@ export class DataService {
     const mail: Mail[] = mails[type].splice(index, 1);
     mails.trash.push(...mail);
     this.storage.put(userName, mails);
+    this.unreadMailCountObserver.next(this.getUnreadMail(userName, "inbox"));
   }
 
   permenantDelete(userName, type, index) {
@@ -99,7 +106,7 @@ export class DataService {
       this.storage.put(toUser, toUserMails);
       this.storage.put(fromUser, fromUserMails);
     }
-    this.unreadMailCountObserver.next(this.getUnreadMail(fromUser));
+    this.unreadMailCountObserver.next(this.getUnreadMail(fromUser, "inbox"));
   }
 
   private addTime(mail: Mail): Mail {

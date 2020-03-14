@@ -17,6 +17,6 @@
       {{ mail.content.subject }}
     </div>
 
-    <div class="mail-content">{{ mail.content.content }}</div>
+    <div class="mail-content" [innerText]="mail.content.content"></div>
   </div>
 </div>

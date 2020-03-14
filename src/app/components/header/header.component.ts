@@ -31,7 +31,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
       }
     );
     this.unreadMails = this.dataService.getUnreadMail(
-      this.dataService.getLoggedInUser()
+      this.dataService.getLoggedInUser(),
+      "inbox"
     );
   }
   changeSvg() {

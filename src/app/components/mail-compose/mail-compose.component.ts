@@ -10,7 +10,7 @@ import { DataService } from "src/app/services/data-service/data.service";
 export class MailComposeComponent implements OnInit {
   @Output() closeBool: EventEmitter<boolean> = new EventEmitter();
 
-  mailContent: any = "";
+  mailContent: string = "";
   to: string = "";
   cc: string = "";
   subject: string = "";
@@ -42,5 +42,10 @@ export class MailComposeComponent implements OnInit {
       );
       this.closeBool.emit(false);
     }
+  }
+
+  mailContentChange(event: Event) {
+    this.mailContent = event.target["innerText"];
+    console.log(event);
   }
 }

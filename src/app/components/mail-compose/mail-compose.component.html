@@ -18,12 +18,11 @@
       <!-- <label class="holder" for="to">Subject</label> -->
       <input type="text" placeholder="Subject" [(ngModel)]="subject" />
     </div>
-
+    <!-- [textContent]="mailContent" -->
     <div
       class="mail-content"
       contenteditable="true"
-      [textContent]="mailContent"
-      (input)="mailContent = $event.target.textContent"
+      (input)="mailContentChange($event)"
     ></div>
     <span class="err-msg">{{ errorMessage }}</span>
     <div class="send-button">

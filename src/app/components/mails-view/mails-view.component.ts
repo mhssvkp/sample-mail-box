@@ -21,7 +21,13 @@ export class MailsViewComponent implements OnInit, OnDestroy {
   activeMenu: string = "";
   activeMail: any = [];
   loggedInUser: string = "";
+  mailBoxTitle: string = "";
   checkedMails: Array<{ type: string; index: number }> = new Array();
+  checkedFalseFilter = val => {
+    return index => {
+      return !(val.index === index);
+    };
+  };
 
   icons: any = [
     { src: "assets/icons/refresh.svg", alt: "refresh", label: "Refresh" },
@@ -34,17 +40,18 @@ export class MailsViewComponent implements OnInit, OnDestroy {
   ) {}
 
   cardClicked(i: number) {
-    // console.log("card clicked index:", i);
+    console.log("card clicked index:", i);
     this.clickedMail = this.mails[this.activeMenu][i];
     this.showContent = true;
     this.dataService.readMail(this.loggedInUser, i, this.activeMenu);
+    this.refreshMailCountIfNotInbox();
     this.mails = this.dataService.getMails(this.loggedInUser);
     this.sortMails();
   }
 
   checkBoxClick(event: Event, index: number) {
-    event.preventDefault();
     event.stopPropagation();
+    const isChecked: boolean = event.target["checked"];
     this.mails[this.activeMenu][index].isSelected = !this.mails[
       this.activeMenu
     ][index].isSelected;
@@ -53,19 +60,35 @@ export class MailsViewComponent implements OnInit, OnDestroy {
       index
     };
     this.mails = JSON.parse(JSON.stringify(this.mails));
-    this.checkedMails.push(selected);
-    console.log("checked", index, this.mails[this.activeMenu][index]);
+    if (isChecked) {
+      this.checkedMails.push(selected);
+    } else {
+      this.checkedMails = this.checkedMails.filter(selectedMail =>
+        this.checkedFalseFilter(selectedMail)(index)
+      );
+    }
+
+    console.log(
+      "checked",
+      index,
+      this.mails[this.activeMenu][index],
+      this.checkedMails
+    );
   }
 
   ngOnInit(): void {
     this.loggedInUser = this.dataService.getLoggedInUser();
     this.mails = this.dataService.getMails(this.loggedInUser);
     this.activeMenu = this.activeMenuSub.getActiveMenuInstant();
+    this.mailBoxTitle = "Inbox";
     this.sortMails();
-    this.unreadMails = this.dataService.getUnreadMail(this.loggedInUser);
+    this.unreadMails = this.dataService.getUnreadMail(
+      this.loggedInUser,
+      this.activeMenu
+    );
     this.unreadMailsSubscription = this.dataService.unreadMailCountObserver.subscribe(
       count => {
-        this.unreadMails = count;
+        if (this.activeMenu === "inbox") this.unreadMails = count;
       }
     );
 
@@ -77,11 +100,30 @@ export class MailsViewComponent implements OnInit, OnDestroy {
           title === "trash" ||
           title === "sent" ||
           title === "drafts"
-        )
+        ) {
           this.activeMenu = title;
+          this.mailBoxTitle;
+          this.unreadMails = this.dataService.getUnreadMail(
+            this.loggedInUser,
+            this.activeMenu
+          );
+        }
+        if (title === "inbox") {
+          this.mailBoxTitle = "Inbox";
+        }
+        if (title === "trash") {
+          this.mailBoxTitle = "Trash";
+        }
+        if (title === "sent") {
+          this.mailBoxTitle = "Sent Mail";
+        }
+        if (title === "drafts") {
+          this.mailBoxTitle = "Drafts";
+        }
         if (title === "compose") {
           this.showCompose = true;
         }
+        this.sortMails();
       }
     );
   }
@@ -89,6 +131,7 @@ export class MailsViewComponent implements OnInit, OnDestroy {
     console.log("close called", val);
     this.showContent = val;
     this.checkedMails = new Array();
+    this.refreshMailCountIfNotInbox();
   }
 
   closeCompose(val) {
@@ -96,6 +139,7 @@ export class MailsViewComponent implements OnInit, OnDestroy {
     this.showCompose = val;
     this.mails = this.dataService.getMails(this.loggedInUser);
     this.sortMails();
+    this.refreshMailCountIfNotInbox();
   }
 
   iconClick(alt) {
@@ -129,6 +173,7 @@ export class MailsViewComponent implements OnInit, OnDestroy {
       this.mails = this.dataService.getMails(this.loggedInUser);
       this.sortMails();
     }
+    this.refreshMailCountIfNotInbox();
   }
 
   formatDate(date) {
@@ -141,7 +186,15 @@ export class MailsViewComponent implements OnInit, OnDestroy {
     );
   }
 
+  refreshMailCountIfNotInbox() {
+    this.unreadMails = this.dataService.getUnreadMail(
+      this.loggedInUser,
+      this.activeMenu
+    );
+  }
+
   ngOnDestroy() {
     this.menuMailsSubscription.unsubscribe();
+    this.unreadMailsSubscription.unsubscribe();
   }
 }

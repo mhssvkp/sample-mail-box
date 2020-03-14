@@ -25,6 +25,8 @@ export class MailMenuComponent implements OnInit {
       key === "drafts"
     )
       this.activeMenu = key;
+
+    // console.log(item, this.menus, index);
     this.activeMenuSub.activeMenuSubscription.next(key);
   }
 
