@@ -10,7 +10,6 @@ import { DataService } from "src/app/services/data-service/data.service";
 import { DebugElement } from "@angular/core";
 import { By } from "@angular/platform-browser";
 import { LoginComponent } from "../login/login.component";
-import { of } from "rxjs";
 
 describe("HeaderComponent", () => {
   let component: HeaderComponent;
@@ -117,15 +116,18 @@ describe("HeaderComponent", () => {
     expect(component.logout).toHaveBeenCalledTimes(1);
   });
 
-  it("should chenge the icon source of toggle", async () => {
+  it("should chenge the icon source of toggle", () => {
     component.ngOnInit();
+    fixture.detectChanges();
     expect(component.sideNavOpen).toBeFalse();
     expect(component.svgSrc).toEqual("assets/icons/menu.svg");
     spyOn(sideNavService, "toggleSideNav");
     component.toggle();
-    fixture.detectChanges();
-    expect(component.sideNavOpen).toBeFalse();
-    expect(component.svgSrc).toEqual("assets/icons/menu.svg");
-    expect(sideNavService.toggleSideNav).toHaveBeenCalledTimes(1);
+    sideNavService.toggler.subscribe(val => {
+      component.sideNavOpen = val;
+      expect(component.sideNavOpen).toBeTrue();
+      expect(component.svgSrc).toEqual("assets/icons/close.svg");
+      expect(sideNavService.toggleSideNav).toHaveBeenCalledTimes(1);
+    });
   });
 });
