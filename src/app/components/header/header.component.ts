@@ -37,7 +37,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       "inbox"
     );
   }
-  changeSvg() {
+  toggle() {
     this.sideNavService.toggleSideNav();
     this.svgSrc = this.sideNavOpen
       ? "assets/icons/close.svg"

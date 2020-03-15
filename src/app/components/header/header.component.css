@@ -35,7 +35,8 @@
   width: 75px;
 }
 
-.icon-badge {
+.icon-badge-1,
+.icon-badge-2 {
   position: absolute;
   text-align: center;
   top: -4px;

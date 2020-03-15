@@ -1,25 +1,38 @@
-import { TestBed, async } from "@angular/core/testing";
+import { TestBed, async, ComponentFixture } from "@angular/core/testing";
 import { RouterTestingModule } from "@angular/router/testing";
 import { AppComponent } from "./app.component";
-import { SideNavComponent } from "./components/side-nav/side-nav.component";
-import { HeaderComponent } from "./components/header/header.component";
 import { InitialisingService } from "./services/initialising-service/initialising.service";
 import { DataService } from "./services/data-service/data.service";
 import { UsersService } from "./services/users-service/users.service";
 import { SideNavService } from "./services/side-nav-service/side-nav.service";
-import { HttpClient, HttpHandler } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { HttpClientTestingModule } from "@angular/common/http/testing";
 
+import { FormsModule } from "@angular/forms";
+import { Router } from "@angular/router";
+import { LoginComponent } from "./components/login/login.component";
+
 describe("AppComponent", () => {
+  let fixture: ComponentFixture<AppComponent>;
+  let app: AppComponent;
   let initialisingService: InitialisingService;
   let dataService: DataService;
   let userService: UsersService;
   let sideNavSerivce: SideNavService;
+  let router: Router;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule, HttpClientTestingModule],
-      declarations: [AppComponent],
+      imports: [
+        RouterTestingModule.withRoutes([
+          { path: "", pathMatch: "full", redirectTo: "login" },
+          { path: "login", component: LoginComponent }
+        ]),
+        HttpClientTestingModule,
+        FormsModule
+      ],
+      declarations: [AppComponent, LoginComponent],
       providers: [
+        AppComponent,
         InitialisingService,
         DataService,
         UsersService,
@@ -29,29 +42,24 @@ describe("AppComponent", () => {
     }).compileComponents();
     initialisingService = TestBed.inject(InitialisingService);
     dataService = TestBed.inject(DataService);
+    userService = TestBed.inject(UsersService);
+    sideNavSerivce = TestBed.inject(SideNavService);
+    fixture = TestBed.createComponent(AppComponent);
+    app = fixture.componentInstance;
+    router = TestBed.get(Router);
   }));
 
   it("should create the app", () => {
-    const fixture = TestBed.createComponent(AppComponent);
-
-    const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  it(`test if login false`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
+  it(`test logout feature login false`, () => {
     fixture.autoDetectChanges();
     dataService.logout();
     expect(app.loggedIn).toBeFalsy();
   });
 
-  // it("should render title", () => {
-  //   const fixture = TestBed.createComponent(AppComponent);
-  //   fixture.detectChanges();
-  //   const compiled = fixture.nativeElement;
-  //   expect(compiled.querySelector(".content span").textContent).toContain(
-  //     "simple-mail-application app is running!"
-  //   );
-  // });
+  it(`when componenet is created route is /`, () => {
+    expect(router.url).toEqual("/");
+  });
 });

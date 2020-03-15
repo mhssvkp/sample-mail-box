@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   password: string = "";
   isInvalidEmail: boolean = false;
   emailRegex: RegExp = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
-
+  isLoggedIn: boolean = false;
   constructor(
     private usersService: UsersService,
     private dataService: DataService,
@@ -47,7 +47,8 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.dataService.isLoggedIn()) {
+    this.isLoggedIn = this.dataService.isLoggedIn();
+    if (this.isLoggedIn) {
       this.routeToHome();
     }
   }
