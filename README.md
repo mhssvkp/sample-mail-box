@@ -28,10 +28,10 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## User Login Details
 
-username : pavan 
+username : mhssvkp@gmail.com
 password : pavan
 
-username : someone
+username : someone@somedomain.com
 password : someone
 
 ## Instructions to run in local
